@@ -1,0 +1,16 @@
+{
+    "name": "MapData",
+    "rootNamespace": "",
+    "references": [
+        "GUID:adedd1f365f5f0f4895536fd2f982943"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

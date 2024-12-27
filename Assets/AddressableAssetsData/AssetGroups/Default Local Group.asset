@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default Local Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Default Local Group
+  m_GUID: 55acc57a71fc09d469a098465318bf47
+  m_SerializeEntries:
+  - m_GUID: 185e604b0d12a4f47b070b5ca6d54147
+    m_Address: DungeonMaps/Map.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2ab7123dd0dac2b4193bc30036385538
+    m_Address: Assets/Game/Prefabs/UI/DialogWindow/DialogWindowYesNo.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6d6f6ef6a45ec844c9b597a608c240f6
+    m_Address: DungeonMaps/WallChip64.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a7a9d997a8ed1d844bfe98dca0e9974a
+    m_Address: DungeonMaps/MassTest.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e656065ee216b0548a6a036d14b8bbc5
+    m_Address: DungeonMaps/UnitAdventure.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fd8949dd0c478f146b1c176f6954a4f6
+    m_Address: DungeonMaps/MapChip64.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 0323e717100df4d449b9c57aa7b579dd, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 6409c4b7c10577a418e4b35a4f2e58cb, type: 2}
+    - {fileID: 11400000, guid: fb5861b03add65243b6413af50ab8c87, type: 2}

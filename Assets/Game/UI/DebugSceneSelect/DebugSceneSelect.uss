@@ -1,0 +1,7 @@
+.actionButton {
+}
+
+.actionButton:hover {
+    scale: 1.2 1.2;
+    transition-duration: 0.2s;
+}

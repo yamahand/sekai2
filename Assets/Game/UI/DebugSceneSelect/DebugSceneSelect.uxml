@@ -1,0 +1,8 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Game/UI/DebugSceneSelect/DebugSceneSelect.uss?fileID=7433441132597879392&amp;guid=35e479b7de8b2d84d83d57c98e5cfba1&amp;type=3#DebugSceneSelect" />
+    <engine:VisualElement style="flex-grow: 1; width: 360px; justify-content: center; margin-top: 30px; margin-right: 30px; margin-bottom: 30px; margin-left: 30px;">
+        <engine:Button text="タイトル" name="button_title" class="actionButton" />
+        <engine:Button text="探索" name="button_exp" class="actionButton" />
+        <engine:Button text="Button" class="actionButton" />
+    </engine:VisualElement>
+</engine:UXML>
