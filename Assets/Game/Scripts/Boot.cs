@@ -1,4 +1,7 @@
 ﻿using Cysharp.Threading.Tasks;
+using System.Linq;
+using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class Boot : MonoBehaviour
@@ -15,9 +18,12 @@ public class Boot : MonoBehaviour
     {
         if( GameManager.Instance.isInitialized)
         {
-            // ゲーム初期化完了後、このシーンをアンロード
+            // エディター専用の処理
+#if UNITY_EDITOR
             UnityEngine.SceneManagement.SceneManager.LoadScene("DebugSceneSelect");
+#else
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Title");
+#endif
         }
     }
-
 }
