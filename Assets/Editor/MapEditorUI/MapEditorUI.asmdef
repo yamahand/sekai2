@@ -1,0 +1,22 @@
+{
+    "name": "MapEditorUI",
+    "rootNamespace": "",
+    "references": [
+        "GUID:adedd1f365f5f0f4895536fd2f982943",
+        "GUID:2aabde949a37d6941963bfa91e3cd395",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:034c977408447714e91237bd5f97c1ff",
+        "GUID:3b570a5146f9d4f0fa107ed4559471a3",
+        "GUID:8c41f684b6199433cbfc54bfc4a1c78e",
+        "GUID:3aa1866a824b5472da50fe142777d95f"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
