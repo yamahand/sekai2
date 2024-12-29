@@ -62,4 +62,22 @@ public class MapUtil
         int y = Mathf.FloorToInt((-worldPosition.y + MapDef.MapHeight / 2 - MapDef.MassSize / 2) / MapDef.MassSize);
         return new Vector2Int(x, y);
     }
+
+    // マップインデックスと方向から壁のインデックスを取得する
+    static public Vector2Int GetWallIndex(Vector2Int mapIndex, MapDef.Direction direction)
+    {
+        // 方向によって壁のインデックスを取得
+        switch (direction)
+        {
+            case MapDef.Direction.Up:
+                return new Vector2Int(mapIndex.x, mapIndex.y);
+            case MapDef.Direction.Down:
+                return new Vector2Int(mapIndex.x, mapIndex.y + 1);
+            case MapDef.Direction.Left:
+                return new Vector2Int(mapIndex.x, mapIndex.y);
+            case MapDef.Direction.Right:
+                return new Vector2Int(mapIndex.x + 1, mapIndex.y);
+        }
+        return new Vector2Int(-1, -1);
+    }
 }

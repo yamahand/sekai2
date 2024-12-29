@@ -24,8 +24,8 @@ namespace Game.Scripts.Exploration
             public int distance;
         }
 
+        // マスの配列
         public Mass[,] masses { get; private set; }
-        private MapData _mapData;
 
         // マップのマス数
         public int mapSizeX { get; private set; } = MapDef.MassMaxX;
@@ -42,6 +42,9 @@ namespace Game.Scripts.Exploration
         public Mass bossMass { get { return _bossMass; } }
         // シンボルユニットのリスト
         public List<IUnit> unitSymbols { get { return _unitSymbols; } }
+
+        // マップデータ
+        private MapData _mapData;
 
         // コンストラクタ
         public Map()
@@ -60,13 +63,13 @@ namespace Game.Scripts.Exploration
         public void Setup(SetupParam param)
         {
             Debug.Log($"Map Setup {param.dugeonName}");
-            var mapData = GameManager.Instance.GetMapData(param.dugeonName);
+            _mapData = GameManager.Instance.GetMapData(param.dugeonName);
             for (int y = 0; y < MapDef.MassMaxY; y++)
             {
                 for (int x = 0; x < MapDef.MassMaxX; x++)
                 {
                     Debug.Log($"Mass Setup: ({x}, {y})");
-                    masses[x, y].Setup(mapData.GetMass(new Vector2Int(x, y)));
+                    masses[x, y].Setup(_mapData.GetMass(new Vector2Int(x, y)));
                 }
             }
 
@@ -82,38 +85,78 @@ namespace Game.Scripts.Exploration
                     }
                 }
             }
-            startPosition = mapData.startMass;
-            SetReachableAllMass(startPosition);
-        }
 
-        // マスの存在を取得するメソッド
-        public bool GetMassExists(int x, int y)
-        {
-            // 範囲チェック
-            if (x < 0 || x >= MapDef.MassMaxX || y < 0 || y >= MapDef.MassMaxY)
+            // 壁の設定
+            for (int x = 0; x < MapDef.MassMaxX; x++)
             {
-                return false;
+                for (int y = 0; y < MapDef.MassMaxY; y++)
+                {
+                    Vector2Int mapIndex = new Vector2Int(x, y);
+                    if (TryGetMassIfExist(mapIndex, out var mass))
+                    {
+                        var upIndex = MapUtil.GetWallIndex(mapIndex, MapDef.Direction.Up);
+                        if(_mapData.GetHorizontalWall(upIndex))
+                        {
+                            mass.SetWall(MapDef.Direction.Up);
+                        }
+                        var downIndex = MapUtil.GetWallIndex(mapIndex, MapDef.Direction.Down);
+                        if (_mapData.GetHorizontalWall(downIndex))
+                        {
+                            mass.SetWall(MapDef.Direction.Down);
+                        }
+                        var leftIndex = MapUtil.GetWallIndex(mapIndex, MapDef.Direction.Left);
+                        if (_mapData.GetVerticalWall(leftIndex))
+                        {
+                            mass.SetWall(MapDef.Direction.Left);
+                        }
+                        var rightIndex = MapUtil.GetWallIndex(mapIndex, MapDef.Direction.Right);
+                        if (_mapData.GetVerticalWall(rightIndex))
+                        {
+                            mass.SetWall(MapDef.Direction.Right);
+                        }
+                    }
+                }
             }
 
-            return masses[x, y].mass.exist;
-        }
-
-        // マスを取得するメソッド
-        public Mass GetMass(int x, int y)
-        {
-            return masses[x, y];
+            startPosition = _mapData.startMass;
+            SetReachableAllMass(startPosition);
         }
 
         // マップインデックスでマスの存在を取得するメソッド
         public bool GetMassExists(Vector2Int mapIndex)
         {
-            return masses[mapIndex.x, mapIndex.y].mass.exist;
+            if(TryGetMass(mapIndex, out Mass mass))
+            {
+                return mass.mass.exist;
+            }
+            return false;
         }
 
         // マップインデックスでマスを取得するメソッド
         public Mass GetMass(Vector2Int mapIndex)
         {
-            return masses[mapIndex.x, mapIndex.y];
+            if(MapData.IsValidMapIndex(mapIndex))
+            {
+                return masses[mapIndex.x, mapIndex.y];
+            }
+            return null;
+        }
+
+        // マップインデックスでマスの取得を試みる
+        public bool TryGetMass(Vector2Int mapIndex, out Mass mass)
+        {
+            mass = GetMass(mapIndex);
+            return mass != null;
+        }
+
+        // マップインデックスでマスが存在するときだけ取得を試みる
+        public bool TryGetMassIfExist(Vector2Int mapIndex, out Mass mass)
+        {
+            if (TryGetMass(mapIndex, out mass))
+            {
+                return mass.mass.exist;
+            }
+            return false;
         }
 
         // マップインデックスとMapDef.Directionで隣接するマスに移動できるかを判定するメソッド

@@ -82,12 +82,13 @@ public class DungeonMap : MonoBehaviour
             float massPosY = massBeginPosY;
             for (int y = 0; y < MapDef.MassMaxY; y++)
             {
-                if (_map.GetMassExists(x, y))
+                var mapIndex = new Vector2Int(x, y);
+                if (_map.GetMassExists(mapIndex))
                 {
                     GameObject massObject = Instantiate(mapChip64, _mapChipObject.transform);
                     massObject.name = $"Mass_{x}_{y}";
                     massObject.transform.localPosition = new Vector3(massPosX, massPosY, 0);
-                    _map.GetMass(x, y).SetGameObject(massObject);
+                    _map.GetMass(mapIndex).SetGameObject(massObject);
                 }
                 massPosY -= MapDef.MassSize;
             }
