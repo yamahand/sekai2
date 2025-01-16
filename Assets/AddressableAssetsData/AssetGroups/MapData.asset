@@ -15,6 +15,12 @@ MonoBehaviour:
   m_GroupName: MapData
   m_GUID: 1258120947df454418ccb1c2240c3c02
   m_SerializeEntries:
+  - m_GUID: 3358f97b3b9b34c40a1b0015197850c6
+    m_Address: MapData/test_map03
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MapData
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 383bc1aaefc3a464b8c6425d18c927d0
     m_Address: MapData/test_map02
     m_ReadOnly: 0
@@ -29,6 +35,12 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 87b9412206394dd4d9b7d15faffee164
     m_Address: MapData/test_map01
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MapData
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b2c5207dd79e7df4586d7ac0442bf8d6
+    m_Address: MapData/test_map04
     m_ReadOnly: 0
     m_SerializedLabels:
     - MapData
