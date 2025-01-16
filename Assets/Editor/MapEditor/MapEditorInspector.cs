@@ -207,7 +207,7 @@ public partial class MapEditorWindow
             {
 
                 // マスの種類を表示
-                GUILayout.Label($"Type: {MapData.GetTypeName(editMass.type)}");
+                GUILayout.Label($"MassType: {MapData.GetMassTypeName(editMass.type)}");
 
                 // 隠しマスのチェックボックス
                 var hidden = GUILayout.Toggle(editMass.hidden, "隠しマス");
@@ -218,7 +218,7 @@ public partial class MapEditorWindow
             }
 
 
-            var massType = (MapData.Type)GUILayout.SelectionGrid((int)editMass.type, MapData.TypeNames, 3);
+            var massType = (MapData.MassType)GUILayout.SelectionGrid((int)editMass.type, MapData.massTypeNames, 3);
             if (massType != editMass.type)
             {
                 _commandQueue.Enqueue(new ChangeMassTypeCommand(this, _editMass, massType));
@@ -226,7 +226,7 @@ public partial class MapEditorWindow
         }
         else
         {
-            GUILayout.Label("Type: -");
+            GUILayout.Label("MassType: -");
             GUILayout.Label("隠しマス: -");
         }
     }

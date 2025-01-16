@@ -307,9 +307,9 @@ public partial class MapEditorUI
     // マスの種類を変更するコマンド
     internal class ChangeMassTypeCommand : MassCommand
     {
-        private MapData.Type _type;
-        private MapData.Type _oldType;
-        public ChangeMassTypeCommand(MapEditorUI mapEditorUI, BoxData boxData, MapData.Type type) : base(mapEditorUI, boxData)
+        private MapData.MassType _type;
+        private MapData.MassType _oldType;
+        public ChangeMassTypeCommand(MapEditorUI mapEditorUI, BoxData boxData, MapData.MassType type) : base(mapEditorUI, boxData)
         {
             _type = type;
         }

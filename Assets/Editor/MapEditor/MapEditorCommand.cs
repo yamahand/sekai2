@@ -335,23 +335,23 @@ public partial class MapEditorWindow
     private class ChangeMassTypeCommand : MapEditorCommandBase
     {
         public override SelectionMode selectionMode { get { return SelectionMode.Edit; } }
-        private MapData.Type _type;
-        private MapData.Type _typeBefore;
+        private MapData.MassType _type;
+        private MapData.MassType _typeBefore;
         private Vector2Int _prevMapIndex;
 
         // コンストラクタ
-        public ChangeMassTypeCommand(MapEditorWindow window, Vector2Int mapIndex, MapData.Type type) : base(window, mapIndex)
+        public ChangeMassTypeCommand(MapEditorWindow window, Vector2Int mapIndex, MapData.MassType type) : base(window, mapIndex)
         {
             _type = type;
         }
         public override void Execute()
         {
-            if(_type == MapData.Type.Start)
+            if(_type == MapData.MassType.Start)
             {
                 _prevMapIndex = _window.GetStartMassIndex();
                 _window.SetStartMass(_mapIndex);
             }
-            else if (_type == MapData.Type.Boss)
+            else if (_type == MapData.MassType.Boss)
             {
                 _prevMapIndex = _window.GetBossMassIndex();
                 _window.SetBoss(_mapIndex, true);
@@ -364,11 +364,11 @@ public partial class MapEditorWindow
         public override void Undo()
         {
             _window.SetMassType(_mapIndex, _typeBefore);
-            if (_type == MapData.Type.Start)
+            if (_type == MapData.MassType.Start)
             {
                 _window.SetStartMass(_prevMapIndex);
             }
-            else if (_type == MapData.Type.Boss)
+            else if (_type == MapData.MassType.Boss)
             {
                 _window.SetBoss(_prevMapIndex, true);
             }

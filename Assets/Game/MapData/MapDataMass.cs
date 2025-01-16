@@ -41,7 +41,7 @@ public partial class MapData
         [Key(10)]
         public int doorId { get; set; } = -1;
         [Key(11)]
-        public Type type { get; set; } = Type.Floor;
+        public MassType type { get; set; } = MassType.Floor;
 
 
         // リセット
@@ -58,7 +58,7 @@ public partial class MapData
             trapId = -1;
             isStairs = false;
             doorId = -1;
-            type = Type.Floor;
+            type = MassType.Floor;
         }
 
 

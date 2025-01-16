@@ -3,7 +3,7 @@
 public partial class MapData
 {
     // マスの種類
-    public enum Type
+    public enum MassType
     {
         Floor,
         Door,
@@ -17,17 +17,17 @@ public partial class MapData
     }
 
     // マスの種類の名前を取得
-    public static string GetTypeName(Type type)
+    public static string GetMassTypeName(MassType type)
     {
-        if (IsValidType((int)type))
+        if (IsValidMassType((int)type))
         {
-            return TypeNames[(int)type];
+            return massTypeNames[(int)type];
         }
         return "-";
     }
 
     // マスの種類名の配列変数
-    public static readonly string[] TypeNames = new string[]
+    public static readonly string[] massTypeNames = new string[]
     {
         "床",
         "扉",
@@ -41,8 +41,8 @@ public partial class MapData
     };
 
     // 有効なタイプかどうかをチェック
-    public static bool IsValidType(int type)
+    public static bool IsValidMassType(int type)
     {
-        return type >= 0 && type < TypeNames.Length;
+        return type >= 0 && type < massTypeNames.Length;
     }
 }

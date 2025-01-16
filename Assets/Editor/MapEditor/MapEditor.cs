@@ -341,23 +341,23 @@ public partial class MapEditorWindow : EditorWindow
 
         switch (mass.type)
         {
-            case MapData.Type.Floor:
+            case MapData.MassType.Floor:
                 return Color.white;
-            case MapData.Type.Door:
+            case MapData.MassType.Door:
                 return Color.yellow;
-            case MapData.Type.Stairs:
+            case MapData.MassType.Stairs:
                 return Color.yellow;
-            case MapData.Type.Item:
+            case MapData.MassType.Item:
                 return Color.green;
-            case MapData.Type.Box:
+            case MapData.MassType.Box:
                 return Color.cyan;
-            case MapData.Type.Trap:
+            case MapData.MassType.Trap:
                 return Color.magenta;
-            case MapData.Type.SymbolEnemy:
+            case MapData.MassType.SymbolEnemy:
                 return Color.cyan;
-            case MapData.Type.Boss:
+            case MapData.MassType.Boss:
                 return Color.red;
-            case MapData.Type.Start:
+            case MapData.MassType.Start:
                 return Color.blue;
         }
 
@@ -640,13 +640,13 @@ public partial class MapEditorWindow : EditorWindow
         if(TryGetMass(_mapData.startMass, out var oldStartMass))
         {
             oldStartMass.start = false;
-            oldStartMass.type = MapData.Type.Floor;
+            oldStartMass.type = MapData.MassType.Floor;
         }
 
         if (TryGetMass(mapIndex, out var mass))
         {
             mass.start = true;
-            mass.type = MapData.Type.Start;
+            mass.type = MapData.MassType.Start;
         }
         _mapData.startMass = mapIndex;
     }
@@ -808,7 +808,7 @@ public partial class MapEditorWindow : EditorWindow
         if (isBoss &&  TryGetMass(_mapData.bossMass, out var oldMass))
         {
             oldMass.isBoss = false;
-            oldMass.type = MapData.Type.Floor;
+            oldMass.type = MapData.MassType.Floor;
         }
 
         if (TryGetMass(mapIndex, out var mass))
@@ -816,13 +816,13 @@ public partial class MapEditorWindow : EditorWindow
             mass.isBoss = isBoss;
             if(isBoss)
             {
-                mass.type = MapData.Type.Boss;
+                mass.type = MapData.MassType.Boss;
                 _mapData.bossMass = mapIndex;
             }
             else
             {
                 _mapData.bossMass = new Vector2Int(-1, -1);
-                mass.type = MapData.Type.Floor;
+                mass.type = MapData.MassType.Floor;
             }
         }
     }
@@ -914,7 +914,7 @@ public partial class MapEditorWindow : EditorWindow
     }
 
     // マスの種類を設定
-    private void SetMassType(Vector2Int mapIndex, MapData.Type type)
+    private void SetMassType(Vector2Int mapIndex, MapData.MassType type)
     {
         if (TryGetMass(mapIndex, out var mass))
         {
@@ -923,12 +923,12 @@ public partial class MapEditorWindow : EditorWindow
     }
 
     // マスの種類を取得
-    private MapData.Type GetMassType(Vector2Int mapIndex)
+    private MapData.MassType GetMassType(Vector2Int mapIndex)
     {
         if (TryGetMass(mapIndex, out var mass))
         {
             return mass.type;
         }
-        return MapData.Type.Floor;
+        return MapData.MassType.Floor;
     }
 }

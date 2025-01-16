@@ -188,10 +188,10 @@ public partial class MapEditorUI : EditorWindow
         if (typeDropdown != null)
         {
             inspectorPanel.Add(typeDropdown);
-            var typeCount = MapData.TypeNames.Length;
+            var typeCount = MapData.massTypeNames.Length;
             for (int i = 0; i < typeCount; i++)
             {
-                typeDropdown.choices.Add(MapData.TypeNames[i]);
+                typeDropdown.choices.Add(MapData.massTypeNames[i]);
             }
             typeDropdown.RegisterValueChangedCallback(evt =>
             {
@@ -201,7 +201,7 @@ public partial class MapEditorUI : EditorWindow
                 {
                     if (selectedBoxData.type == BoxType.floor)
                     {
-                        _commandQueue.Enqueue(new ChangeMassTypeCommand(this, selectedBoxData, (MapData.Type)_typeDropdown.index));
+                        _commandQueue.Enqueue(new ChangeMassTypeCommand(this, selectedBoxData, (MapData.MassType)_typeDropdown.index));
                     }
                 }
             });
@@ -509,7 +509,7 @@ public partial class MapEditorUI : EditorWindow
         var toggle = evt.target as Button;
         //if (toggle != null)
         {
-            var type = (MapData.Type)toggle.userData;
+            var type = (MapData.MassType)toggle.userData;
             Debug.Log($"TypeToggleChange {type}");
         }
     }
