@@ -1,8 +1,15 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/Editor/MapEditorUI/MapEditorUI.uss?fileID=7433441132597879392&amp;guid=bfd0a81cdaf33f94c85e458abb5e1193&amp;type=3#MapEditorUI" />
-    <engine:Label text="Label" name="Label" />
-    <engine:VisualElement name="BaseElement" style="flex-grow: 1; flex-direction: row; min-height: 480px;">
-        <engine:VisualElement name="MassPanel" style="flex-grow: 1; width: auto; flex-direction: column; background-color: rgba(0, 0, 0, 0.3);" />
-        <engine:VisualElement name="Inspector" style="flex-grow: 1;" />
+    <Style src="project://database/Assets/Editor/MapEditorUI/MapEditorUIMenu.uss?fileID=7433441132597879392&amp;guid=e0c90c16dbb2b0e42b39844b3cba647a&amp;type=3#MapEditorUIMenu" />
+    <engine:VisualElement name="BaseElement" style="flex-grow: 1; flex-direction: column; flex-basis: auto;">
+        <engine:VisualElement name="Menu" style="flex-grow: 1; flex-direction: row; max-height: 32px; min-height: 32px; height: 32px;">
+            <engine:Button text="New" name="NewButton" />
+            <engine:Button text="Open" name="OpenButton" />
+            <engine:Button text="Save" name="SaveButton" />
+            <engine:Button text="&lt;-" name="UndoButton" />
+            <engine:Button text="-&gt;" name="RedoButton" />
+            <engine:TextField label="MapName" placeholder-text="map name" name="MapName" style="-unity-text-align: middle-center;" />
+        </engine:VisualElement>
+        <engine:VisualElement name="EditorPanel" />
     </engine:VisualElement>
 </engine:UXML>

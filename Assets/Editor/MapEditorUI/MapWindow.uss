@@ -1,0 +1,7 @@
+.top_handle {
+}
+
+.top_handle:hover {
+    background-color: rgb(255, 255, 255);
+    cursor: text;
+}
