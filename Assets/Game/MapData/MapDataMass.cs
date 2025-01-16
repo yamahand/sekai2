@@ -44,44 +44,6 @@ public partial class MapData
         public Type type { get; set; } = Type.Floor;
 
 
-        // マスの種類
-        public enum Type
-        {
-            Floor,
-            Door,
-            Stairs,
-            Item,
-            Box,
-            Trap,
-            SymbolEnemy,
-            Boss,
-            Start,
-        }
-        // マスの種類の名前を取得
-        public static string GetTypeName(Type type)
-        {
-            if(TypeNames.IsValid((int)type))
-            {
-                return TypeNames[(int)type];
-            }
-            return "-";
-        }
-
-        // マスの種類名の配列変数
-        public static readonly string[] TypeNames = new string[]
-        {
-            "床",
-            "扉",
-            "階段",
-            "罠",
-            "アイテム",
-            "宝箱",
-            "シンボル",
-            "ボス",
-            "スタート",
-        };
-
-
         // リセット
         public void Reset()
         {

@@ -39,7 +39,7 @@ public partial class MapData
     // マップインデックスの初期値
     public static readonly Vector2Int DefaultMapIndex = new Vector2Int(-1, -1);
     // マップデータの保存先
-    public static readonly string mapDataPath = "Assets/Game/Data/Map/";
+    public static readonly string mapDataPath = "Game/Data/Map/";
 
     // コンストラクタ
     public MapData()
