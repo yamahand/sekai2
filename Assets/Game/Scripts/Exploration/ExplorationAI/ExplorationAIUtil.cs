@@ -2,7 +2,7 @@
 
 public class ExplorationAIUtil
 {
-    public static IExplorationAI CreateAI(ExplorationAIDef.Type type, Game.Scripts.Exploration.Map map)
+    public static IExplorationAI CreateAI(ExplorationAIDef.Type type, ExplorationMap map)
     {
         switch (type)
         {

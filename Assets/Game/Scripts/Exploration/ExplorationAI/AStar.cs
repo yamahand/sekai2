@@ -46,7 +46,7 @@ public class AStar : IExplorationAI
         }
     }
 
-    private Game.Scripts.Exploration.Map _map; // マップ
+    private ExplorationMap _map; // マップ
     private Vector2Int _start; // スタート位置
     private Vector2Int _goal; // ゴール位置
     private PriorityQueue<Node> _openList; // オープンリスト
@@ -62,7 +62,7 @@ public class AStar : IExplorationAI
     /// AStarクラスのコンストラクタ
     /// </summary>
     /// <param name="map">探索対象のマップ</param>
-    public AStar(Game.Scripts.Exploration.Map map)
+    public AStar(ExplorationMap map)
     {
         _map = map;
         _openList = new PriorityQueue<Node>(_map.mapSizeX * _map.mapSizeY);
@@ -201,7 +201,7 @@ public class AStar : IExplorationAI
     /// <param name="direction">移動する方向</param>
     /// <param name="map">マップ</param>
     /// <param name="parent">親ノード</param>
-    private void _AddNode(Vector2Int current, MapDef.Direction direction, Game.Scripts.Exploration.Map map, Node parent)
+    private void _AddNode(Vector2Int current, MapDef.Direction direction, ExplorationMap map, Node parent)
     {
         var next = current + MapUtil.DirectionToVector2Int(direction);
         if (!map.CanMove(current, direction))

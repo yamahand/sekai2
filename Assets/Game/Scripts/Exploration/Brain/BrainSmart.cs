@@ -3,7 +3,7 @@
 [System.Serializable]
 public class BrainSmart : IBrain
 {
-    public BrainSmart(ExplorationAIDef.Type type, Game.Scripts.Exploration.Map map)
+    public BrainSmart(ExplorationAIDef.Type type, ExplorationMap map)
     {
         _explorationAI = ExplorationAIUtil.CreateAI(type, map);
         _map = map;
@@ -17,5 +17,5 @@ public class BrainSmart : IBrain
     }
 
     private IExplorationAI _explorationAI;
-    private Game.Scripts.Exploration.Map _map;
+    private ExplorationMap _map;
 }

@@ -1,0 +1,9 @@
+	変数名	name	desc	type	category	price	sel
+	型名	string	string	int	int	int	int
+	キー	p		s	s		
+	説明	名前	説明	種類	カテゴリ	購入価格	売却価格
+item01		アイテム01	アイテム01です				
+item02		アイテム02	アイテム02です				
+item03		アイテム03	アイテム03です				
+weapon01		武器01	武器01です				
+weapon02		武器02	武器02です				

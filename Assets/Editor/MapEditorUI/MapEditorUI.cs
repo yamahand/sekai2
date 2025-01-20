@@ -61,7 +61,7 @@ public partial class MapEditorUI : EditorWindow
     // マスの種類の一文字ラベルを取得
     public static string GetFloarLabel(int type)
     {
-        if (floarLabel.IsValid(type))
+        if (floarLabel.IsValidIndex(type))
         {
             return floarLabel[type];
         }

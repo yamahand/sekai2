@@ -2,51 +2,40 @@
 
 public static class ArrayExtensions
 {
-    // 配列の拡張メソッド Invalid を定義
-    public static bool Invalid<T>(this T[] array, int index)
+    // 1次元配列のインデックスが有効かどうかをチェック
+    public static bool IsValidIndex<T>(this T[] array, int index)
     {
-        return index < 0 || index >= array.Length;
+        return index >= 0 && index < array.Length;
     }
 
-    public static bool IsValid<T>(this T[] array, int index)
+    // 2次元配列のインデックスが有効かどうかをチェック
+    public static bool IsValidIndex<T>(this T[,] array, int x, int y)
     {
-        return !array.Invalid(index);
+        return x >= 0 && x < array.GetLength(1) && y >= 0 && y < array.GetLength(0);
     }
 
-    // 2次元配列の拡張メソッド
-    public static bool Invalid<T>(this T[,] array, int x, int y)
+    // 2次元配列のVector2Intインデックスが有効かどうかをチェック
+    public static bool IsValidIndex<T>(this T[,] array, Vector2Int index)
     {
-        return x < 0 || x >= array.GetLength(1) || y < 0 || y >= array.GetLength(0);
+        return array.IsValidIndex(index.x, index.y);
     }
 
-    public static bool IsValid<T>(this T[,] array, int x, int y)
-    {
-        return !array.Invalid(x, y);
-    }
-
-    public static bool Invalid<T>(this T[,] array, Vector2Int index)
-    {
-        return array.Invalid(index.x, index.y);
-    }
-
-    public static bool IsValid<T>(this T[,] array, Vector2Int index)
-    {
-        return !array.Invalid(index);
-    }
-
+    // 2次元配列からVector2Intインデックスで値を取得
     public static T GetT<T>(this T[,] array, Vector2Int index)
     {
         return array[index.y, index.x];
     }
 
+    // 2次元配列にVector2Intインデックスで値を設定
     public static void SetT<T>(this T[,] array, Vector2Int index, T value)
     {
         array[index.y, index.x] = value;
     }
 
+    // 2次元配列からVector2Intインデックスで値を取得し、失敗した場合はデフォルト値を返す
     public static bool TryGetT<T>(this T[,] array, Vector2Int index, out T value, T d = default)
     {
-        if (array.Invalid(index))
+        if (!array.IsValidIndex(index))
         {
             value = d;
             return false;
@@ -55,40 +44,34 @@ public static class ArrayExtensions
         return true;
     }
 
-    // 3次元配列の拡張メソッド
-    public static bool Invalid<T>(this T[,,] array, int x, int y, int z)
+    // 3次元配列のインデックスが有効かどうかをチェック
+    public static bool IsValidIndex<T>(this T[,,] array, int x, int y, int z)
     {
-        return x < 0 || x >= array.GetLength(2) || y < 0 || y >= array.GetLength(1) || z < 0 || z >= array.GetLength(0);
+        return x >= 0 && x < array.GetLength(2) && y >= 0 && y < array.GetLength(1) && z >= 0 && z < array.GetLength(0);
     }
 
-    public static bool IsValid<T>(this T[,,] array, int x, int y, int z)
+    // 3次元配列のVector3Intインデックスが有効かどうかをチェック
+    public static bool IsValidIndex<T>(this T[,,] array, Vector3Int index)
     {
-        return !array.Invalid(x, y, z);
+        return array.IsValidIndex(index.x, index.y, index.z);
     }
 
-    public static bool Invalid<T>(this T[,,] array, Vector3Int index)
-    {
-        return array.Invalid(index.x, index.y, index.z);
-    }
-
-    public static bool IsValid<T>(this T[,,] array, Vector3Int index)
-    {
-        return !array.Invalid(index);
-    }
-
+    // 3次元配列からVector3Intインデックスで値を取得
     public static T GetT<T>(this T[,,] array, Vector3Int index)
     {
         return array[index.z, index.y, index.x];
     }
 
+    // 3次元配列にVector3Intインデックスで値を設定
     public static void SetT<T>(this T[,,] array, Vector3Int index, T value)
     {
         array[index.z, index.y, index.x] = value;
     }
 
+    // 3次元配列からVector3Intインデックスで値を取得し、失敗した場合はデフォルト値を返す
     public static bool TryGetT<T>(this T[,,] array, Vector3Int index, out T value)
     {
-        if (array.Invalid(index))
+        if (!array.IsValidIndex(index))
         {
             value = default;
             return false;
@@ -97,7 +80,7 @@ public static class ArrayExtensions
         return true;
     }
 
-    // 配列のクリア
+    // 1次元配列をクリア
     public static void Clear<T>(this T[] array)
     {
         for (int i = 0; i < array.Length; i++)
@@ -106,6 +89,7 @@ public static class ArrayExtensions
         }
     }
 
+    // 2次元配列をクリア
     public static void Clear<T>(this T[,] array)
     {
         for (int y = 0; y < array.GetLength(0); y++)
@@ -117,6 +101,7 @@ public static class ArrayExtensions
         }
     }
 
+    // 3次元配列をクリア
     public static void Clear<T>(this T[,,] array)
     {
         for (int z = 0; z < array.GetLength(0); z++)
@@ -131,7 +116,7 @@ public static class ArrayExtensions
         }
     }
 
-    // 配列のコピー
+    // 1次元配列をコピー
     public static void CopyTo<T>(this T[] source, T[] destination)
     {
         for (int i = 0; i < source.Length && i < destination.Length; i++)
@@ -140,6 +125,7 @@ public static class ArrayExtensions
         }
     }
 
+    // 2次元配列をコピー
     public static void CopyTo<T>(this T[,] source, T[,] destination)
     {
         for (int y = 0; y < source.GetLength(0) && y < destination.GetLength(0); y++)
@@ -151,6 +137,7 @@ public static class ArrayExtensions
         }
     }
 
+    // 3次元配列をコピー
     public static void CopyTo<T>(this T[,,] source, T[,,] destination)
     {
         for (int z = 0; z < source.GetLength(0) && z < destination.GetLength(0); z++)
@@ -165,7 +152,7 @@ public static class ArrayExtensions
         }
     }
 
-    // 配列の初期化
+    // 1次元配列を指定した値で初期化
     public static void Initialize<T>(this T[] array, T value)
     {
         for (int i = 0; i < array.Length; i++)
@@ -174,6 +161,7 @@ public static class ArrayExtensions
         }
     }
 
+    // 2次元配列を指定した値で初期化
     public static void Initialize<T>(this T[,] array, T value)
     {
         for (int y = 0; y < array.GetLength(0); y++)
@@ -185,6 +173,7 @@ public static class ArrayExtensions
         }
     }
 
+    // 3次元配列を指定した値で初期化
     public static void Initialize<T>(this T[,,] array, T value)
     {
         for (int z = 0; z < array.GetLength(0); z++)
